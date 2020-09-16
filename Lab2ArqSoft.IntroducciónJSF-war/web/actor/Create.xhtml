@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateActorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateActorLabel_actorId}" for="actorId" />
+                    <h:inputText id="actorId" value="#{actorController.selected.actorId}" title="#{bundle.CreateActorTitle_actorId}" required="true" requiredMessage="#{bundle.CreateActorRequiredMessage_actorId}"/>
+                    <h:outputLabel value="#{bundle.CreateActorLabel_firstName}" for="firstName" />
+                    <h:inputText id="firstName" value="#{actorController.selected.firstName}" title="#{bundle.CreateActorTitle_firstName}" required="true" requiredMessage="#{bundle.CreateActorRequiredMessage_firstName}"/>
+                    <h:outputLabel value="#{bundle.CreateActorLabel_lastName}" for="lastName" />
+                    <h:inputText id="lastName" value="#{actorController.selected.lastName}" title="#{bundle.CreateActorTitle_lastName}" required="true" requiredMessage="#{bundle.CreateActorRequiredMessage_lastName}"/>
+                    <h:outputLabel value="#{bundle.CreateActorLabel_lastUpdate}" for="lastUpdate" />
+                    <h:inputText id="lastUpdate" value="#{actorController.selected.lastUpdate}" title="#{bundle.CreateActorTitle_lastUpdate}" required="true" requiredMessage="#{bundle.CreateActorRequiredMessage_lastUpdate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{actorController.create}" value="#{bundle.CreateActorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{actorController.prepareList}" value="#{bundle.CreateActorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateActorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

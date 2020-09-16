@@ -1,2 +1,4 @@
 # jsf_ee
-Implement application whit jsf and jee 
+
+Implement application with jsf and jee 
+
